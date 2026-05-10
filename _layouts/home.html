@@ -18,7 +18,7 @@ layout: default
                 <h2><span>Latest Posts</span></h2>
             </div>
             <div class="row listrecent">
-                {% for post in paginator.posts %}
+                {% for post in site.posts limit: 12 %}
                 <div class="col-lg-6 col-md-6 mb-30px card-group">
                     <div class="card h-100">
                         <div class="maxthumb">
@@ -63,14 +63,12 @@ layout: default
                 </div>
                 {% endfor %}
             </div>
-        </section>
 
-        <!-- Pagination -->
-        <div class="bottompagination">
-            <div class="pointerup"><i class="fa fa-caret-up"></i></div>
-            <span class="navigation" role="navigation">
-                {% include pagination.html %}
-            </span>
-        </div>
+            {% if site.posts.size > 12 %}
+            <div class="text-center mt-4 mb-5">
+                <a href="/archive" class="btn btn-outline-primary">View All Posts</a>
+            </div>
+            {% endif %}
+        </section>
     </div>
 </div>

@@ -28,14 +28,9 @@ remote_theme: wowthemesnet/mediumish-theme-jekyll
 
 # Plugins (GitHub Pages compatible)
 plugins:
-  - jekyll-paginate
   - jekyll-sitemap
   - jekyll-feed
   - jekyll-seo-tag
-
-# Pagination
-paginate: 9
-paginate_path: /page:num/
 
 # Authors
 authors:
