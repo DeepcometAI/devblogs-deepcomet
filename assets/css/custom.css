@@ -751,15 +751,21 @@ body {
 
 /* ===== Search Modal ===== */
 .search-btn {
-  color: var(--text);
+  color: var(--text) !important;
   padding: 0.5rem;
   border: none;
   background: none;
   transition: color 0.2s ease;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
 }
 
 .search-btn:hover {
-  color: var(--primary);
+  color: var(--primary) !important;
+  background: var(--bg-muted);
 }
 
 .search-modal {
@@ -909,21 +915,4 @@ mark {
 }
 
 /* ===== Favicon ===== */
-head link[rel="icon"] {
-  display: none;
-}
-
-head {
-  position: relative;
-}
-
-head::after {
-  content: "";
-  position: absolute;
-  width: 32px;
-  height: 32px;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-  border-radius: 8px;
-  top: 10px;
-  left: 10px;
-}
+/* Favicon is handled via HTML link tags in default.html */
