@@ -74,48 +74,48 @@ body {
   border-color: var(--border);
 }
 
-.navbar-toggler {
-  border-color: var(--border);
-  background: transparent;
-  padding: 4px 6px;
-  cursor: pointer;
+.navbar.navbar-toggler {
+  border-color: var(--border) !important;
+  background: transparent !important;
+  padding: 4px 6px !important;
+  cursor: pointer !important;
 }
 
-.hamburger {
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  position: relative;
+.navbar.navbar-toggler .hamburger {
+  display: inline-block !important;
+  width: 24px !important;
+  height: 24px !important;
+  position: relative !important;
 }
 
-.hamburger-line {
-  display: block;
-  width: 100%;
-  height: 2px;
-  background: var(--text);
-  margin: 3px 0;
-  transition: all 0.3s ease;
-  border-radius: 2px;
+.navbar.navbar-toggler .hamburger-line {
+  display: block !important;
+  width: 100% !important;
+  height: 2px !important;
+  background: var(--text) !important;
+  margin: 3px 0 !important;
+  transition: all 0.3s ease !important;
+  border-radius: 2px !important;
 }
 
-.hamburger-line:first-child {
-  margin-top: 0;
+.navbar.navbar-toggler .hamburger-line:first-child {
+  margin-top: 0 !important;
 }
 
-.navbar-toggler:not(.collapsed) .hamburger-line:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
+.navbar.navbar-toggler:not(.collapsed) .hamburger-line:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px) !important;
 }
 
-.navbar-toggler:not(.collapsed) .hamburger-line:nth-child(2) {
-  opacity: 0;
+.navbar.navbar-toggler:not(.collapsed) .hamburger-line:nth-child(2) {
+  opacity: 0 !important;
 }
 
-.navbar-toggler:not(.collapsed) .hamburger-line:nth-child(3) {
-  transform: rotate(-45deg) translate(7px, -6px);
+.navbar.navbar-toggler:not(.collapsed) .hamburger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px) !important;
 }
 
-[data-theme="dark"] .hamburger-line {
-  background: var(--text);
+[data-theme="dark"] .navbar.navbar-toggler .hamburger-line {
+  background: var(--text) !important;
 }
 
 .logotext {
