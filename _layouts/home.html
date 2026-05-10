@@ -1,0 +1,76 @@
+---
+layout: default
+---
+
+<div class="site-content">
+    <div class="container">
+        <!-- Site Title & Description -->
+        <section class="featured-posts">
+            <div class="section-title">
+                <h2><span>{{ site.name }}</span></h2>
+            </div>
+            <p class="lead text-center mb-5">{{ site.description }}</p>
+        </section>
+
+        <!-- Recent Posts -->
+        <section class="recent-posts">
+            <div class="section-title">
+                <h2><span>Latest Posts</span></h2>
+            </div>
+            <div class="row listrecent">
+                {% for post in paginator.posts %}
+                <div class="col-lg-6 col-md-6 mb-30px card-group">
+                    <div class="card h-100">
+                        <div class="maxthumb">
+                            <a href="{{ post.url | relative_url }}">
+                                {% if post.image %}
+                                <img class="img-fluid" src="{{ post.image | relative_url }}" alt="{{ post.title }}">
+                                {% else %}
+                                <div class="img-fluid bg-gradient" style="height:220px;display:flex;align-items:center;justify-content:center;background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                                    <span class="text-white font-weight-bold h4">{{ post.title }}</span>
+                                </div>
+                                {% endif %}
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <h2 class="card-title">
+                                <a class="text-dark" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                            </h2>
+                            <h4 class="card-text text-muted">{{ post.excerpt | strip_html | truncatewords: 25 }}</h4>
+                        </div>
+                        <div class="card-footer bg-white">
+                            <div class="wrapfooter">
+                                {% assign author = site.authors[post.author] %}
+                                {% if author %}
+                                <span class="meta-footer-thumb">
+                                    <img class="author-thumb" src="{{ author.avatar | relative_url }}" alt="{{ author.display_name }}">
+                                </span>
+                                <span class="author-meta">
+                                    <span class="post-name"><a href="{{ author.web }}">{{ author.display_name }}</a></span><br/>
+                                    <span class="post-date">{{ post.date | date_to_string }}</span>
+                                </span>
+                                {% endif %}
+                                <span class="post-read-more">
+                                    <a href="{{ post.url | relative_url }}" title="Read Story">
+                                        <svg class="svgIcon-use" width="25" height="25" viewbox="0 0 25 25">
+                                            <path d="M19 6c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v14.66h.012c.01.103.045.204.12.285a.5.5 0 0 0 .706.03L12.5 16.85l5.662 4.126a.708.708 0 0 0 .706-.03c.075-.081.11-.182.12-.285H19V6zm-6.838 9.97L7 19.636V6c0-.55.45-1 1-1h9c.55 0 1 .45 1 1v13.637l-5.162-3.668a.49.49 0 0 0-.676 0zM12.162 12.5a1.839 1.839 0 0 0-.422 0 .49.49 0 0 0-.14.03.5.5 0 0 0-.166.076l-.094.066-2.493 1.773a.708.708 0 0 0 .706.03c.075-.081.11-.182.12-.285H19V6z" fill-rule="evenodd"></path>
+                                        </svg>
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <!-- Pagination -->
+        <div class="bottompagination">
+            <div class="pointerup"><i class="fa fa-caret-up"></i></div>
+            <span class="navigation" role="navigation">
+                {% include pagination.html %}
+            </span>
+        </div>
+    </div>
+</div>

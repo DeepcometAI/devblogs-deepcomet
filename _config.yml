@@ -1,0 +1,94 @@
+# Site Settings
+name: "Deepcomet AI Blog"
+title: "Deepcomet AI Blog"
+description: "Engineering and research blog for Deepcomet AI — autonomous systems, AI-native kernels, and the future of computing."
+logo: "assets/images/logo.png"
+favicon: "assets/images/favicon.ico"
+baseurl: ""
+url: "https://devblogs.deepcomet.space"
+github: "https://github.com/Nehal-aditya"
+email: "nehal@deepcomet.space"
+
+twitter:
+  username: deepcometai
+  card: summary_large_image
+
+# Jekyll
+permalink: /:year/:month/:day/:title/
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: "highlight"
+
+# Theme
+remote_theme: wowthemesnet/mediumish-theme-jekyll
+
+# Plugins (GitHub Pages compatible)
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Pagination
+paginate: 9
+paginate_path: /page:num/
+
+# Authors
+authors:
+  nehal:
+    name: Nehal Aditya
+    display_name: Nehal Aditya
+    avatar: assets/images/avatar.png
+    email: nehal@deepcomet.space
+    web: https://ai.deepcomet.space
+    twitter: https://twitter.com/deepcometai
+    description: "Founder & CEO at Deepcomet AI. Building autonomous systems and AI-native computing platforms."
+
+# Adsense (optional)
+# adsense: "ca-pub-xxxxxxxx"
+
+# Analytics
+analytics: "G-XXXXXXXXXX"
+
+# Mailchimp
+mailchimp-list: ""
+
+# Disqus
+disqus: "deepcomet-devblogs"
+
+# Social
+social:
+  name: Deepcomet AI
+  links:
+    - https://twitter.com/deepcometai
+    - https://github.com/Nehal-aditya
+    - https://www.linkedin.com/company/deepcomet
+
+# Defaults
+defaults:
+  # Posts
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      author: nehal
+      avatar: assets/images/avatar.png
+  # Pages
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: page
+
+# Sass
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# Exclude
+exclude: [README.md, Gemfile, Gemfile.lock, vendor, .git, .github]

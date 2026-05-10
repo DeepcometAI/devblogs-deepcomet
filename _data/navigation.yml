@@ -1,0 +1,13 @@
+main:
+  - title: Home
+    url: /
+  - title: About
+    url: /about/
+  - title: Contact
+    url: /contact/
+  - title: Docs
+    url: https://docs.deepcomet.space
+    external: true
+  - title: Main Site
+    url: https://ai.deepcomet.space
+    external: true

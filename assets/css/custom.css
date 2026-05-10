@@ -1,0 +1,250 @@
+/* Deepcomet AI Custom Styles */
+
+:root {
+  --primary: #667eea;
+  --primary-dark: #5a67d8;
+  --accent: #764ba2;
+  --text: #1a202c;
+  --text-muted: #718096;
+  --bg: #ffffff;
+  --bg-muted: #f7fafc;
+  --border: #e2e8f0;
+  --radius: 12px;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Navigation */
+.navbar {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.logotext {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 1.4rem;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Cards */
+.card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(102, 126, 234, 0.12);
+}
+
+.card-title a {
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--text);
+  transition: color 0.2s;
+}
+
+.card-title a:hover {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.card-text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Author Thumb */
+.author-thumb {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--border);
+}
+
+/* Post Content */
+.article-post {
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.article-post h1,
+.article-post h2,
+.article-post h3,
+.article-post h4 {
+  font-weight: 700;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.article-post p {
+  margin-bottom: 1.5rem;
+}
+
+.article-post code {
+  font-family: 'JetBrains Mono', 'SF Mono', Monaco, Consolas, monospace;
+  background: var(--bg-muted);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.article-post pre {
+  background: #1a202c;
+  color: #e2e8f0;
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+.article-post pre code {
+  background: transparent;
+  padding: 0;
+  color: inherit;
+}
+
+.article-post blockquote {
+  border-left: 4px solid var(--primary);
+  padding-left: 1.5rem;
+  margin: 2rem 0;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.article-post a {
+  color: var(--primary);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.article-post a:hover {
+  border-bottom-color: var(--primary);
+}
+
+/* Tags */
+.tags li a {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  background: var(--bg-muted);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+
+.tags li a:hover {
+  background: var(--primary);
+  color: white;
+  text-decoration: none;
+}
+
+/* Footer */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem 0;
+  margin-top: 3rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.footer a {
+  color: var(--text-muted);
+  transition: color 0.2s;
+}
+
+.footer a:hover {
+  color: var(--primary);
+}
+
+/* Featured Image */
+.featured-image {
+  border-radius: var(--radius);
+  margin-bottom: 2rem;
+}
+
+/* Share Buttons */
+.share ul li a {
+  color: var(--text-muted);
+  font-size: 1.2rem;
+  transition: color 0.2s;
+}
+
+.share ul li a:hover {
+  color: var(--primary);
+}
+
+/* Pagination */
+.pagination span,
+.pagination a {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+}
+
+.pagination a {
+  color: var(--primary);
+  background: var(--bg-muted);
+}
+
+.pagination a:hover {
+  background: var(--primary);
+  color: white;
+  text-decoration: none;
+}
+
+/* Post Author Box */
+.post-top-meta {
+  padding: 2rem;
+  background: var(--bg-muted);
+  border-radius: var(--radius);
+  margin: 2rem 0;
+}
+
+.post-top-meta .author-thumb {
+  width: 80px;
+  height: 80px;
+}
+
+/* Section Title */
+.section-title h2 {
+  font-weight: 700;
+  font-size: 1.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title h2 span {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .card {
+    margin-bottom: 1.5rem;
+  }
+
+  .post-top-meta .author-thumb {
+    width: 60px;
+    height: 60px;
+  }
+
+  .article-post {
+    font-size: 1rem;
+  }
+}

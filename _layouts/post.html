@@ -1,0 +1,107 @@
+---
+layout: default
+---
+
+<!-- Post Featured Image -->
+{% if page.image %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="mainheading">
+                <h1 class="posttitle">{{ page.title }}</h1>
+                <p class="lead">{{ page.description }}</p>
+            </div>
+            <img class="featured-image img-fluid" src="{% if page.image contains "://" %}{{ page.image }}{% else %}{{ page.image | relative_url }}{% endif %}" alt="{{ page.title }}">
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<!-- Post Content -->
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <article class="article-post">
+                {% unless page.image %}
+                <div class="mainheading">
+                    <h1 class="posttitle">{{ page.title }}</h1>
+                    <p class="lead">{{ page.description }}</p>
+                </div>
+                {% endunless %}
+
+                <div class="article-post-content">
+                    {{ content }}
+                </div>
+
+                <!-- Post Categories -->
+                {% if page.categories %}
+                <div class="after-post-tags">
+                    <ul class="tags">
+                        {% for category in page.categories %}
+                        <li><a href="{{ site.baseurl }}/category/{{ category | slugify }}/">{{ category }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+
+                <!-- Post Share -->
+                <div class="share">
+                    <p>Share</p>
+                    <ul>
+                        <li class="ml-1 mr-1">
+                            <a target="_blank" href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ page.url | absolute_url }}" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li class="ml-1 mr-1">
+                            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.url | absolute_url }}&title={{ page.title }}" onclick="window.open(this.href, 'linkedin-share', 'width=550,height=550');return false;">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </li>
+                        <li class="ml-1 mr-1">
+                            <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Post Author -->
+                {% assign author = site.authors[page.author] %}
+                {% if author %}
+                <div class="row post-top-meta">
+                    <div class="col-md-2">
+                        <img class="author-thumb" src="{{ author.avatar | relative_url }}" alt="{{ author.display_name }}">
+                    </div>
+                    <div class="col-md-10">
+                        <a target="_blank" class="link-dark" href="{{ author.web }}">{{ author.display_name }}</a>
+                        <a target="_blank" href="{{ author.twitter }}" class="btn follow">Follow</a>
+                        <span class="author-description">{{ author.description }}</span>
+                    </div>
+                </div>
+                {% endif %}
+            </article>
+
+            <!-- Prev/Next Posts -->
+            <div class="row PageNavigation mt-4 prevnextlinks">
+                {% if page.previous.url %}
+                <div class="col-md-6 rightborder pl-0">
+                    <a class="thepostlink" href="{{ page.previous.url | relative_url }}">&laquo; {{ page.previous.title }}</a>
+                </div>
+                {% endif %}
+                {% if page.next.url %}
+                <div class="col-md-6 text-right pr-0">
+                    <a class="thepostlink" href="{{ page.next.url | relative_url }}">{{ page.next.title }} &raquo;</a>
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- Disqus Comments -->
+            <div id="comments" class="row mb-5">
+                <div class="col-md-8">
+                    {% include disqus.html %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

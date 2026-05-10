@@ -1,0 +1,16 @@
+<!-- Pagination links -->
+<div class="pagination justify-content-center">
+    {% if paginator.previous_page %}
+    <a class="ml-1 mr-1" href="{{ paginator.previous_page_path | relative_url }}">&laquo; Newer</a>
+    {% else %}
+    <span>&laquo; Newer</span>
+    {% endif %}
+
+    <span class="ml-1 mr-1">Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
+
+    {% if paginator.next_page %}
+    <a class="ml-1 mr-1" href="{{ paginator.next_page_path | relative_url }}">Older &raquo;</a>
+    {% else %}
+    <span>Older &raquo;</span>
+    {% endif %}
+</div>
