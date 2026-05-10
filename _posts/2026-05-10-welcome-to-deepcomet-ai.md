@@ -7,6 +7,7 @@ date: 2026-05-10 09:00:00 +0530
 categories: [announcement, company]
 tags: [deepcomet, ai, autonomous-systems]
 featured: true
+image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=400&fit=crop"
 ---
 
 Today, we're excited to officially launch the Deepcomet AI blog — a space where we'll share our research, engineering decisions, and the philosophy behind building autonomous computing systems.

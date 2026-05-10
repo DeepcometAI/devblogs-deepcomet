@@ -5,48 +5,52 @@ layout: default
 <div class="site-content">
     <div class="container">
         <!-- Site Title & Description -->
-        <section class="featured-posts">
-            <div class="section-title">
-                <h2><span>{{ site.name }}</span></h2>
+        <section class="hero-section text-center py-5">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <h1 class="hero-title mb-3">{{ site.name }}</h1>
+                    <p class="hero-lead text-muted">{{ site.description }}</p>
+                </div>
             </div>
-            <p class="lead text-center mb-5">{{ site.description }}</p>
         </section>
 
         <!-- Recent Posts -->
-        <section class="recent-posts">
-            <div class="section-title">
-                <h2><span>Latest Posts</span></h2>
+        <section class="recent-posts py-4">
+            <div class="section-title text-center mb-4">
+                <h2 class="section-heading"><span>Latest Posts</span></h2>
             </div>
             <div class="row listrecent">
                 {% for post in site.posts limit: 12 %}
-                <div class="col-lg-6 col-md-6 mb-30px card-group">
-                    <div class="card h-100">
-                        <div class="maxthumb">
+                <div class="col-lg-6 col-md-6 mb-4 card-group">
+                    <div class="card h-100 blog-card">
+                        <div class="card-image">
                             <a href="{{ post.url | relative_url }}">
                                 {% if post.image %}
                                 <img class="img-fluid" src="{{ post.image | relative_url }}" alt="{{ post.title }}">
                                 {% else %}
-                                <div class="img-fluid bg-gradient" style="height:220px;display:flex;align-items:center;justify-content:center;background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                                    <span class="text-white font-weight-bold h4">{{ post.title }}</span>
+                                <div class="card-gradient">
+                                    <span class="card-gradient-text">{{ post.title }}</span>
                                 </div>
                                 {% endif %}
                             </a>
                         </div>
                         <div class="card-body">
                             <h2 class="card-title">
-                                <a class="text-dark" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                                <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
                             </h2>
-                            <h4 class="card-text text-muted">{{ post.excerpt | strip_html | truncatewords: 25 }}</h4>
+                            <p class="card-excerpt">{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
                         </div>
-                        <div class="card-footer bg-white">
+                        <div class="card-footer">
                             <div class="wrapfooter">
                                 {% assign author = site.authors[post.author] %}
                                 {% if author %}
                                 <span class="meta-footer-thumb">
-                                    <img class="author-thumb" src="{{ author.avatar | relative_url }}" alt="{{ author.display_name }}">
+                                    <div class="author-avatar" style="background: linear-gradient(135deg, #667eea, #764ba2);display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;color:white;font-weight:700;font-size:14px;">
+                                        {{ author.display_name | slice: 0 }}
+                                    </div>
                                 </span>
                                 <span class="author-meta">
-                                    <span class="post-name"><a href="{{ author.web }}">{{ author.display_name }}</a></span><br/>
+                                    <span class="post-name"><a href="{{ author.web }}">{{ author.display_name }}</a></span>
                                     <span class="post-date">{{ post.date | date_to_string }}</span>
                                 </span>
                                 {% endif %}
@@ -66,7 +70,7 @@ layout: default
 
             {% if site.posts.size > 12 %}
             <div class="text-center mt-4 mb-5">
-                <a href="/archive" class="btn btn-outline-primary">View All Posts</a>
+                <a href="{{ site.baseurl }}/archive/" class="btn btn-outline-primary rounded-pill px-4">View All Posts</a>
             </div>
             {% endif %}
         </section>

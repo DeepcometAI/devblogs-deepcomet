@@ -3,6 +3,25 @@
 (function() {
   'use strict';
 
+  // Theme toggle functionality
+  const themeToggle = document.getElementById('theme-toggle');
+  const html = document.documentElement;
+  
+  // Set initial theme
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  html.setAttribute('data-theme', savedTheme);
+
+  // Toggle theme
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      
+      html.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+    });
+  }
+
   // Smooth scroll for anchor links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {

@@ -6,6 +6,7 @@ author: nehal
 date: 2026-05-10 15:00:00 +0530
 categories: [engineering, systems]
 tags: [zenith, kernel, microkernel, scheduling, ai]
+image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=400&fit=crop"
 ---
 
 The operating system kernel hasn't fundamentally changed in decades. We still use priority-based schedulers, static resource allocation, and reactive error handling. At Deepcomet AI, we're reimagining what a kernel can be when it's designed with AI as a first-class citizen.

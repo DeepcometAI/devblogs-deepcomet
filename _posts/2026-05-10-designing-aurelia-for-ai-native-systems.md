@@ -6,6 +6,7 @@ author: nehal
 date: 2026-05-10 12:00:00 +0530
 categories: [engineering, language-design]
 tags: [aurelia, programming-languages, compilers, ai]
+image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=400&fit=crop"
 ---
 
 When we started building Deepcomet AI, we quickly realized that existing programming languages weren't designed for the AI-native era. They treat tensors as library constructs, automatic differentiation as an afterthought, and hardware acceleration as an opaque optimization.
