@@ -36,10 +36,12 @@
             </ul>
 
             <!-- Search -->
-            <form class="form-inline my-2 my-lg-0" method="get" action="https://www.google.com/search" target="_blank">
-                <input type="hidden" name="sitesearch" value="{{ site.url }}">
-                <input class="form-control mr-sm-2" type="search" name="q" placeholder="Search..." aria-label="Search">
-            </form>
+            <button class="btn btn-link search-btn" id="search-btn" aria-label="Search">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"/>
+                    <path d="m21 21-4.35-4.35"/>
+                </svg>
+            </button>
 
             <!-- Theme Toggle -->
             <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle dark mode" title="Toggle dark/light mode">
@@ -61,3 +63,17 @@
 </nav>
 <!-- End Navigation
 ================================================== -->
+
+<!-- Search Modal -->
+<div class="search-modal" id="search-modal">
+  <div class="search-modal-content">
+    <div class="search-modal-header">
+      <h3>Search Blog Posts</h3>
+      <button class="search-modal-close" id="search-close">&times;</button>
+    </div>
+    <div class="search-modal-body">
+      <input type="text" id="search-input" placeholder="Search for posts..." autocomplete="off">
+      <div id="search-results" class="search-results"></div>
+    </div>
+  </div>
+</div>
