@@ -148,4 +148,4 @@ Key settings in `_config.yml`:
 
 ## License
 
-Content is &copy; Deepcomet AI. Code is [MIT](LICENSE).
+Content is &copy; Deepcomet AI. Code is [MIT](LICENSE). 
