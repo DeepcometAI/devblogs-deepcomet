@@ -29,53 +29,59 @@
   const searchInput = document.getElementById('search-input');
   const searchResults = document.getElementById('search-results');
 
-  // Build search index from page content
-  const posts = [
-    {% for post in site.posts %}
-    {
-      title: {{ post.title | jsonify }},
-      url: {{ post.url | relative_url | jsonify }},
-      content: {{ post.content | strip_html | strip_newlines | jsonify }},
-      date: {{ post.date | date: "%Y-%m-%d" | jsonify }},
-      description: {{ post.description | jsonify }}
-    },
-    {% endfor %}
-  ];
+  // Debug: Check if elements exist
+  console.log('Search button:', searchBtn);
+  console.log('Search modal:', searchModal);
+  console.log('Search close:', searchClose);
+  console.log('Search input:', searchInput);
+  console.log('Search results:', searchResults);
 
   // Open search modal
   if (searchBtn) {
-    searchBtn.addEventListener('click', () => {
-      searchModal.style.display = 'flex';
-      searchInput.focus();
+    console.log('Adding click listener to search button');
+    searchBtn.addEventListener('click', (e) => {
+      console.log('Search button clicked!', e);
+      e.preventDefault();
+      e.stopPropagation();
+      if (searchModal) {
+        searchModal.style.display = 'flex';
+        if (searchInput) searchInput.focus();
+      }
     });
+  } else {
+    console.log('Search button not found!');
   }
 
   // Close search modal
   if (searchClose) {
     searchClose.addEventListener('click', () => {
-      searchModal.style.display = 'none';
-      searchInput.value = '';
-      searchResults.innerHTML = '';
+      if (searchModal) {
+        searchModal.style.display = 'none';
+        if (searchInput) searchInput.value = '';
+        if (searchResults) searchResults.innerHTML = '';
+      }
     });
   }
 
   // Close on escape key
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && searchModal.style.display === 'flex') {
+    if (e.key === 'Escape' && searchModal && searchModal.style.display === 'flex') {
       searchModal.style.display = 'none';
-      searchInput.value = '';
-      searchResults.innerHTML = '';
+      if (searchInput) searchInput.value = '';
+      if (searchResults) searchResults.innerHTML = '';
     }
   });
 
   // Close on background click
-  searchModal.addEventListener('click', (e) => {
-    if (e.target === searchModal) {
-      searchModal.style.display = 'none';
-      searchInput.value = '';
-      searchResults.innerHTML = '';
-    }
-  });
+  if (searchModal) {
+    searchModal.addEventListener('click', (e) => {
+      if (e.target === searchModal) {
+        searchModal.style.display = 'none';
+        if (searchInput) searchInput.value = '';
+        if (searchResults) searchResults.innerHTML = '';
+      }
+    });
+  }
 
   // Search functionality
   if (searchInput) {
@@ -83,14 +89,30 @@
       const query = searchInput.value.toLowerCase().trim();
       
       if (query.length < 2) {
-        searchResults.innerHTML = '';
+        if (searchResults) searchResults.innerHTML = '';
         return;
       }
 
-      const results = posts.filter(post => {
-        return post.title.toLowerCase().includes(query) ||
-               post.content.toLowerCase().includes(query) ||
-               (post.description && post.description.toLowerCase().includes(query));
+      // Simple search through page content
+      const allPosts = document.querySelectorAll('.blog-card, .archive-item');
+      const results = [];
+      
+      allPosts.forEach(post => {
+        const title = post.querySelector('.card-title a, .archive-title a');
+        const content = post.querySelector('.card-excerpt, .archive-excerpt');
+        
+        if (title && content) {
+          const titleText = title.textContent.toLowerCase();
+          const contentText = content.textContent.toLowerCase();
+          
+          if (titleText.includes(query) || contentText.includes(query)) {
+            results.push({
+              title: title.textContent,
+              url: title.href,
+              excerpt: content.textContent.substring(0, 150) + '...'
+            });
+          }
+        }
       });
 
       displaySearchResults(results, query);
@@ -98,6 +120,8 @@
   }
 
   function displaySearchResults(results, query) {
+    if (!searchResults) return;
+    
     if (results.length === 0) {
       searchResults.innerHTML = '<div class="search-no-results">No posts found</div>';
       return;
@@ -105,13 +129,11 @@
 
     const resultsHtml = results.map(post => {
       const title = highlightText(post.title, query);
-      const description = post.description || post.content.substring(0, 150) + '...';
-      const highlightedDesc = highlightText(description, query);
+      const highlightedDesc = highlightText(post.excerpt, query);
       
       return `
         <div class="search-result-item">
           <h4><a href="${post.url}">${title}</a></h4>
-          <p class="search-result-date">${post.date}</p>
           <p class="search-result-excerpt">${highlightedDesc}</p>
         </div>
       `;
